@@ -7,7 +7,6 @@ import Projects from './components/Projects';
 import DSA from './components/DSA';
 import Achievements from './components/Achievements';
 import Education from './components/Education';
-import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
@@ -31,7 +30,6 @@ export default function App() {
         <DSA />
         <Achievements />
         <Education />
-        <Certifications />
         <Contact onOpenResume={() => setIsResumeOpen(true)} />
       </main>
 

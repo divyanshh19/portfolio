@@ -16,7 +16,7 @@ export default function Navbar({ onOpenResume }) {
         setScrolled(false);
       }
 
-      const sections = ['home', 'about', 'skills', 'projects', 'dsa', 'achievements', 'education', 'certifications', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'dsa', 'achievements', 'education', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -44,7 +44,6 @@ export default function Navbar({ onOpenResume }) {
     { name: 'Problem Solving', href: '#dsa', id: 'dsa' },
     { name: 'Achievements', href: '#achievements', id: 'achievements' },
     { name: 'Education', href: '#education', id: 'education' },
-    { name: 'Certifications', href: '#certifications', id: 'certifications' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
