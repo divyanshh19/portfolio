@@ -1,9 +1,11 @@
 import React from 'react';
-import { X, FileDown, ExternalLink, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { X, FileDown, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function ResumeModal({ isOpen, onClose }) {
   if (!isOpen) return null;
+
+  const directDownloadUrl = "https://drive.google.com/uc?export=download&id=1OQ9nzJA7A_XT9Qwl_D-eCIutivWDLSrp";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
@@ -55,13 +57,13 @@ export default function ResumeModal({ isOpen, onClose }) {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <a
-            href={personalInfo.resumeUrl}
+            href={directDownloadUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-bold font-mono text-xs shadow-lg shadow-cyan-500/20 transition-all"
           >
             <FileDown className="w-4 h-4" />
-            <span>Download PDF Resume</span>
+            <span>Direct PDF Download</span>
           </a>
 
           <a
@@ -71,7 +73,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono text-xs font-semibold border border-slate-700 transition-colors"
           >
             <ExternalLink className="w-4 h-4 text-cyan-400" />
-            <span>Open in Google Drive</span>
+            <span>View on Google Drive</span>
           </a>
         </div>
 
