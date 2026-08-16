@@ -8,7 +8,7 @@ export const personalInfo = {
   linkedin: "divyansh-dubey-83648a244",
   linkedinUrl: "https://www.linkedin.com/in/divyansh-dubey-83648a244",
   instagramUrl: "https://instagram.com/divyansh_dubey62",
-  leetcodeUrl: "https://leetcode.com/u/divyanshh19",
+  leetcodeUrl: "https://leetcode.com/divyansh_dubey62/",
   resumeUrl: "https://drive.google.com/file/d/1OQ9nzJA7A_XT9Qwl_D-eCIutivWDLSrp/view?usp=drivesdk",
   primaryRole: "Java Backend Developer | Full-Stack Developer | AI/ML Enthusiast",
   shortIntro: "Building secure, scalable backend systems and intelligent applications using Java, Spring Boot, React, and modern AI/ML technologies.",
@@ -66,7 +66,7 @@ export const projectsData = [
       flow: ["Product", "Marketplace", "Barter / Points System", "AI Fairness Checker", "Trade Decision"]
     },
     githubUrl: "https://github.com/divyanshh19",
-    liveDemoUrl: null, // configurable
+    liveDemoUrl: "https://e-barter-ai-trade-loop-ten.vercel.app",
     badgeText: "Spring Boot + AI Chatbot",
     isFeatured: true
   },
@@ -93,7 +93,7 @@ export const projectsData = [
       detail: "Evaluated on HAM10000 with Focal Loss & Temperature Scaling"
     },
     githubUrl: "https://github.com/divyanshh19",
-    liveDemoUrl: null,
+    liveDemoUrl: "https://dermaai-kohl.vercel.app/",
     badgeText: "93.27% ROC-AUC Ensemble",
     isFeatured: true
   }
@@ -141,20 +141,6 @@ export const educationData = [
     period: "2023 – 2027",
     score: "CGPA: 8.80 / 10",
     isCurrent: true
-  },
-  {
-    degree: "12th — CBSE",
-    institution: "Theosophical Inter College, Etawah",
-    period: "2023",
-    score: "79.8%",
-    isCurrent: false
-  },
-  {
-    degree: "10th — CBSE",
-    institution: "Theosophical Inter College, Etawah",
-    period: "2021",
-    score: "76.30%",
-    isCurrent: false
   }
 ];
 
