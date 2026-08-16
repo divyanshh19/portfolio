@@ -10,9 +10,9 @@ export const personalInfo = {
   instagramUrl: "https://instagram.com/divyansh_dubey62",
   leetcodeUrl: "https://leetcode.com/divyansh_dubey62/",
   resumeUrl: "https://drive.google.com/file/d/1OQ9nzJA7A_XT9Qwl_D-eCIutivWDLSrp/view?usp=sharing",
-  primaryRole: "Java Backend Developer | Full-Stack Developer | AI/ML Enthusiast",
-  shortIntro: "Building secure, scalable backend systems and intelligent applications using Java, Spring Boot, React, and modern AI/ML technologies.",
-  summary: "Aspiring Java Backend Developer with hands-on experience in Java, Spring Boot, Spring Security, MySQL, REST APIs, and JWT authentication. Strong foundation in OOP, Data Structures and Algorithms, with practical experience in Machine Learning, Computer Vision, and Generative AI."
+  primaryRole: "Java Backend Developer | Full-Stack Developer | AI/ML & Computer Vision Enthusiast",
+  shortIntro: "Building secure, scalable backend systems, computer vision systems, and intelligent applications using Java, Spring Boot, React, PyTorch, and OpenCV.",
+  summary: "Aspiring Java Backend Developer with hands-on experience in Java, Spring Boot, Spring Security, MySQL, REST APIs, and JWT authentication. Strong foundation in OOP, Data Structures and Algorithms, with practical experience in Machine Learning, Computer Vision (CNNs, ViTs, OpenCV, Grad-CAM), and Generative AI."
 };
 
 export const aboutPillars = [

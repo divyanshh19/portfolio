@@ -8,6 +8,7 @@ export default function Hero({ onOpenResume }) {
     { label: "Java", color: "from-amber-500/20 to-orange-500/20 text-amber-300 border-amber-500/30" },
     { label: "Spring Boot", color: "from-emerald-500/20 to-teal-500/20 text-emerald-300 border-emerald-500/30" },
     { label: "Backend Engineering", color: "from-cyan-500/20 to-blue-500/20 text-cyan-300 border-cyan-500/30" },
+    { label: "Computer Vision", color: "from-sky-500/20 to-teal-500/20 text-sky-300 border-sky-500/30" },
     { label: "Full-Stack Development", color: "from-indigo-500/20 to-purple-500/20 text-indigo-300 border-indigo-500/30" },
     { label: "AI/ML", color: "from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30" },
     { label: "Problem Solving", color: "from-rose-500/20 to-orange-500/20 text-rose-300 border-rose-500/30" },
