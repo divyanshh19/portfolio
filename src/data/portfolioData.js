@@ -139,7 +139,6 @@ export const educationData = [
     degree: "B.E. (Honors) in Computer Science and Engineering with Artificial Intelligence & Machine Learning",
     institution: "RNS Institute of Technology, Bengaluru",
     period: "2023 – 2027",
-    score: "CGPA: 8.80 / 10",
     isCurrent: true
   }
 ];

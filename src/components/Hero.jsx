@@ -234,8 +234,8 @@ export default function Hero({ onOpenResume }) {
                   <GraduationCap className="w-4 h-4 text-cyan-400" />
                   <span>RNSIT B.E. (Honors) CSE AI&ML</span>
                 </div>
-                <span className="font-bold text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">
-                  8.80 / 10 CGPA
+                <span className="font-semibold text-cyan-400 bg-slate-900 px-2.5 py-1 rounded border border-slate-800">
+                  2023 – 2027
                 </span>
               </div>
 

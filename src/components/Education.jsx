@@ -51,9 +51,11 @@ export default function Education() {
                   <Calendar className="w-3.5 h-3.5" />
                   {edu.period}
                 </span>
-                <span className="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs font-bold">
-                  {edu.score}
-                </span>
+                {edu.score && (
+                  <span className="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs font-bold">
+                    {edu.score}
+                  </span>
+                )}
               </div>
             </div>
           ))}
