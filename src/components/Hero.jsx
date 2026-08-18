@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import { ArrowRight, FileDown, Terminal, Cpu, Server, Layers, Code, ShieldCheck, MapPin, Sparkles, Activity, CheckCircle2, Zap, Trophy, Play } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, FileDown, Terminal, Cpu, Server, Layers, Code, ShieldCheck, MapPin, Sparkles, CheckCircle2, Trophy, GraduationCap, Award } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, InstagramIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume }) {
-  const [activeCommand, setActiveCommand] = useState('health'); // 'health' | 'vision' | 'ai' | 'leetcode'
-
   const coreBadges = [
     { label: "Java", color: "from-amber-500/20 to-orange-500/20 text-amber-300 border-amber-500/30" },
     { label: "Spring Boot", color: "from-emerald-500/20 to-teal-500/20 text-emerald-300 border-emerald-500/30" },
@@ -15,49 +13,6 @@ export default function Hero({ onOpenResume }) {
     { label: "AI/ML", color: "from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30" },
     { label: "Problem Solving", color: "from-rose-500/20 to-orange-500/20 text-rose-300 border-rose-500/30" },
   ];
-
-  const commandResponses = {
-    health: {
-      cmd: "curl -X GET /api/v1/health",
-      badge: "HTTP 200 OK",
-      output: [
-        "✓ Spring Boot Microservices: ONLINE (Port 8080)",
-        "✓ Spring Security + JWT Filter: ACTIVE",
-        "✓ 15+ RESTful APIs: SECURED & VERIFIED",
-        "✓ Database: MySQL + Hibernate JPA (Connected)"
-      ]
-    },
-    vision: {
-      cmd: "python evaluate_vision.py --model ensemble",
-      badge: "ROC-AUC: 93.27%",
-      output: [
-        "✓ Architecture: EfficientNet-B0 + ConvNeXt + DeiT-Tiny",
-        "✓ Preprocessing: OpenCV DullRazor + CLAHE",
-        "✓ Dataset: HAM10000 Skin Lesion Database",
-        "✓ Model Explainability: Grad-CAM Heatmaps Enabled"
-      ]
-    },
-    ai: {
-      cmd: "java -jar loopbot-service.jar --llm=gpt-4o-mini",
-      badge: "AI Active",
-      output: [
-        "✓ OpenAI GPT-4o-mini: Connected",
-        "✓ Barter Trade Fairness Checker: RUNNING",
-        "✓ Generative Product Desc Generator: READY",
-        "✓ Fallback: Rule-Based Logic Enabled"
-      ]
-    },
-    leetcode: {
-      cmd: "leetcode stats --user=divyansh_dubey62",
-      badge: "2x 100 Streak",
-      output: [
-        "✓ Active Streaks: 2x 100 Days Problem-Solving Badges",
-        "✓ Primary Language: Java (OOP & DSA)",
-        "✓ Focus Areas: Graphs, Trees, Dynamic Programming",
-        "✓ Profile: leetcode.com/divyansh_dubey62"
-      ]
-    }
-  };
 
   return (
     <section id="home" className="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-grid-pattern overflow-hidden">
@@ -182,128 +137,106 @@ export default function Hero({ onOpenResume }) {
 
           </div>
 
-          {/* Right Column: Interactive System Engineering Dashboard */}
+          {/* Right Column: Clean Candidate Highlights & Credentials Card Deck */}
           <div className="lg:col-span-5 relative">
-            <div className="glass-panel-glow rounded-3xl p-6 text-left border border-slate-800/90 relative z-10 shadow-2xl space-y-6">
+            <div className="glass-panel-glow rounded-3xl p-6 sm:p-7 text-left border border-slate-800/90 relative z-10 shadow-2xl space-y-5">
               
-              {/* Card Header & Status Telemetry */}
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+              {/* Card Title Header */}
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold">
-                    <Activity className="w-5 h-5 animate-pulse" />
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold">
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-mono text-sm font-bold text-slate-100 flex items-center gap-2">
-                      System Architecture Core
+                    <h3 className="font-mono text-sm font-bold text-slate-100">
+                      Engineering Highlights
                     </h3>
-                    <p className="text-[11px] font-mono text-slate-400">Production-Ready Microservices & AI</p>
+                    <p className="text-[11px] font-mono text-slate-400">Core Technical Capabilities</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-400 font-mono text-[10px] font-bold">
-                  ● ACTIVE
+                <span className="px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-300 font-mono text-[10px] font-bold">
+                  ★ Verified
                 </span>
               </div>
 
-              {/* 4 Interactive Feature Nodes Grid */}
-              <div className="grid grid-cols-2 gap-3 text-left">
+              {/* 4 Clean Visual Highlight Cards */}
+              <div className="space-y-3">
                 
-                {/* Node 1: Spring Boot */}
-                <div 
-                  onClick={() => setActiveCommand('health')}
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
-                    activeCommand === 'health' 
-                      ? 'bg-cyan-500/10 border-cyan-500/40 text-cyan-300 shadow-md shadow-cyan-500/10 scale-[1.02]' 
-                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <Server className="w-4 h-4 text-cyan-400" />
-                    <span className="text-[10px] font-mono font-bold text-cyan-400">Java 21</span>
+                {/* Highlight 1: Java Backend */}
+                <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-slate-700 transition-all space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="font-bold text-cyan-300 flex items-center gap-2">
+                      <Server className="w-4 h-4 text-cyan-400" />
+                      Java & Spring Boot Backend
+                    </span>
+                    <span className="text-[10px] text-slate-400 font-semibold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                      15+ REST APIs
+                    </span>
                   </div>
-                  <div className="font-mono text-xs font-bold text-slate-200">Spring Boot REST</div>
-                  <div className="text-[10px] text-slate-400 font-mono mt-1">15+ REST APIs & JWT</div>
+                  <p className="text-xs text-slate-300 leading-relaxed pl-6">
+                    Spring Security, JWT stateless tokens, BCrypt hashing, JPA Specifications, and Docker.
+                  </p>
                 </div>
 
-                {/* Node 2: Computer Vision */}
-                <div 
-                  onClick={() => setActiveCommand('vision')}
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
-                    activeCommand === 'vision' 
-                      ? 'bg-purple-500/10 border-purple-500/40 text-purple-300 shadow-md shadow-purple-500/10 scale-[1.02]' 
-                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <Cpu className="w-4 h-4 text-purple-400" />
-                    <span className="text-[10px] font-mono font-bold text-emerald-400">93.27%</span>
+                {/* Highlight 2: PyTorch Computer Vision */}
+                <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-slate-700 transition-all space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="font-bold text-purple-300 flex items-center gap-2">
+                      <Cpu className="w-4 h-4 text-purple-400" />
+                      PyTorch Computer Vision
+                    </span>
+                    <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+                      93.27% ROC-AUC
+                    </span>
                   </div>
-                  <div className="font-mono text-xs font-bold text-slate-200">Computer Vision</div>
-                  <div className="text-[10px] text-slate-400 font-mono mt-1">PyTorch CNN + ViT</div>
+                  <p className="text-xs text-slate-300 leading-relaxed pl-6">
+                    CNN + ViT Ensemble (EfficientNet, ConvNeXt, DeiT) on HAM10000 with Grad-CAM explainability.
+                  </p>
                 </div>
 
-                {/* Node 3: Generative AI */}
-                <div 
-                  onClick={() => setActiveCommand('ai')}
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
-                    activeCommand === 'ai' 
-                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300 shadow-md shadow-emerald-500/10 scale-[1.02]' 
-                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <Sparkles className="w-4 h-4 text-emerald-400" />
-                    <span className="text-[10px] font-mono font-bold text-emerald-400">GPT-4o</span>
+                {/* Highlight 3: Generative AI & LLMs */}
+                <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-slate-700 transition-all space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="font-bold text-emerald-300 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-emerald-400" />
+                      Generative AI & LLM Engine
+                    </span>
+                    <span className="text-[10px] text-emerald-400 font-semibold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                      GPT-4o-mini
+                    </span>
                   </div>
-                  <div className="font-mono text-xs font-bold text-slate-200">LoopBot LLM</div>
-                  <div className="text-[10px] text-slate-400 font-mono mt-1">Barter Trade AI Engine</div>
+                  <p className="text-xs text-slate-300 leading-relaxed pl-6">
+                    LoopBot barter chatbot & Nemotron 3.5 medical safety guardrails with rule-based fallbacks.
+                  </p>
                 </div>
 
-                {/* Node 4: LeetCode DSA */}
-                <div 
-                  onClick={() => setActiveCommand('leetcode')}
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
-                    activeCommand === 'leetcode' 
-                      ? 'bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-md shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <Trophy className="w-4 h-4 text-amber-400" />
-                    <span className="text-[10px] font-mono font-bold text-amber-400">2x 100</span>
+                {/* Highlight 4: Data Structures & Algorithms */}
+                <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-slate-700 transition-all space-y-1">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="font-bold text-amber-300 flex items-center gap-2">
+                      <Trophy className="w-4 h-4 text-amber-400" />
+                      Data Structures & Algorithms
+                    </span>
+                    <span className="text-[10px] text-amber-400 font-bold bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800">
+                      2x 100 Days Streak
+                    </span>
                   </div>
-                  <div className="font-mono text-xs font-bold text-slate-200">LeetCode Streak</div>
-                  <div className="text-[10px] text-slate-400 font-mono mt-1">Java DSA Optimization</div>
+                  <p className="text-xs text-slate-300 leading-relaxed pl-6">
+                    Daily problem solving in Java on LeetCode with OOP optimization & complexity analysis.
+                  </p>
                 </div>
 
               </div>
 
-              {/* Interactive Live Terminal Simulator Box */}
-              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-900 font-mono text-xs space-y-3 shadow-inner">
-                {/* Terminal Header */}
-                <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 text-[11px] text-slate-400">
-                  <div className="flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                    <span className="text-slate-300 font-semibold">{commandResponses[activeCommand].cmd}</span>
-                  </div>
-                  <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-cyan-300 font-bold text-[10px]">
-                    {commandResponses[activeCommand].badge}
-                  </span>
+              {/* Bottom Academic Standing Banner */}
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-300">
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-cyan-400" />
+                  <span>RNSIT B.E. (Honors) CSE AI&ML</span>
                 </div>
-
-                {/* Command Output Stream */}
-                <div className="space-y-1.5 text-[11px] text-slate-300">
-                  {commandResponses[activeCommand].output.map((line, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <span className="text-emerald-400 font-bold">&gt;</span>
-                      <span>{line}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="pt-2 flex items-center justify-between text-[10px] text-slate-500 border-t border-slate-900">
-                  <span>Click any node above to execute command</span>
-                  <span className="text-cyan-400 animate-pulse">● LIVE TELEMETRY</span>
-                </div>
+                <span className="font-bold text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">
+                  8.80 / 10 CGPA
+                </span>
               </div>
 
             </div>
