@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, FileDown, Terminal, Cpu, Server, Layers, Code, ShieldCheck, MapPin, Check, Copy } from 'lucide-react';
+import { ArrowRight, FileDown, Terminal, Cpu, Server, Layers, Code, ShieldCheck, MapPin, Sparkles, Activity, CheckCircle2, Zap, Trophy, Play } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, InstagramIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume }) {
-  const [activeTab, setActiveTab] = useState('security'); // 'security' | 'vision' | 'ai' | 'metrics'
-  const [copied, setCopied] = useState(false);
+  const [activeCommand, setActiveCommand] = useState('health'); // 'health' | 'vision' | 'ai' | 'leetcode'
 
   const coreBadges = [
     { label: "Java", color: "from-amber-500/20 to-orange-500/20 text-amber-300 border-amber-500/30" },
@@ -17,96 +16,47 @@ export default function Hero({ onOpenResume }) {
     { label: "Problem Solving", color: "from-rose-500/20 to-orange-500/20 text-rose-300 border-rose-500/30" },
   ];
 
-  const codeSnippets = {
-    security: {
-      file: "SecurityConfig.java",
-      lang: "Java",
-      tag: "Spring Security 6 + JWT",
-      code: `@Configuration
-@EnableWebSecurity
-public class SecurityConfig {
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-            .csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers("/api/v1/trade/**").hasRole("USER")
-                .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-            )
-            .sessionManagement(s -> s.sessionCreationPolicy(STATELESS))
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-            .build(); // Secured 15+ RESTful APIs
-    }
-}`
+  const commandResponses = {
+    health: {
+      cmd: "curl -X GET /api/v1/health",
+      badge: "HTTP 200 OK",
+      output: [
+        "✓ Spring Boot Microservices: ONLINE (Port 8080)",
+        "✓ Spring Security + JWT Filter: ACTIVE",
+        "✓ 15+ RESTful APIs: SECURED & VERIFIED",
+        "✓ Database: MySQL + Hibernate JPA (Connected)"
+      ]
     },
     vision: {
-      file: "DermaAI_Vision.py",
-      lang: "Python",
-      tag: "PyTorch CNN + ViT Ensemble",
-      code: `import torch
-import torchvision.models as models
-
-class LesionEnsemble(nn.Module):
-    def __init__(self):
-        super().__init__()
-        # Preprocessed with OpenCV DullRazor & CLAHE
-        self.effnet = models.efficientnet_b0(pretrained=True)
-        self.convnext = models.convnext_tiny(pretrained=True)
-        self.deit = torch.hub.load('facebook/deit', 'deit_tiny_patch16_224')
-
-    def forward(self, img_tensor):
-        l1, l2, l3 = self.effnet(img_tensor), self.convnext(img_tensor), self.deit(img_tensor)
-        logits = (l1 + l2 + l3) / 3.0
-        return torch.softmax(logits / 1.5, dim=-1) # 93.27% ROC-AUC on HAM10000`
+      cmd: "python evaluate_vision.py --model ensemble",
+      badge: "ROC-AUC: 93.27%",
+      output: [
+        "✓ Architecture: EfficientNet-B0 + ConvNeXt + DeiT-Tiny",
+        "✓ Preprocessing: OpenCV DullRazor + CLAHE",
+        "✓ Dataset: HAM10000 Skin Lesion Database",
+        "✓ Model Explainability: Grad-CAM Heatmaps Enabled"
+      ]
     },
     ai: {
-      file: "LoopBotService.java",
-      lang: "Java",
-      tag: "OpenAI GPT-4o-mini + Fallback",
-      code: `@Service
-public class LoopBotService {
-
-    @Autowired
-    private OpenAiChatModel chatModel;
-
-    public TradeFairnessResult evaluateBarter(Product p1, Product p2) {
-        try {
-            String prompt = String.format("Analyze barter fairness between %s and %s", p1, p2);
-            String aiResponse = chatModel.call(prompt);
-            return parseAiDecision(aiResponse);
-        } catch (Exception ex) {
-            // Rule-based fallback mechanism for guaranteed uptime
-            return executeRuleBasedFallback(p1, p2);
-        }
-    }
-}`
+      cmd: "java -jar loopbot-service.jar --llm=gpt-4o-mini",
+      badge: "AI Active",
+      output: [
+        "✓ OpenAI GPT-4o-mini: Connected",
+        "✓ Barter Trade Fairness Checker: RUNNING",
+        "✓ Generative Product Desc Generator: READY",
+        "✓ Fallback: Rule-Based Logic Enabled"
+      ]
     },
-    metrics: {
-      file: "SystemMetrics.json",
-      lang: "JSON",
-      tag: "Telemetry & Performance",
-      code: `{
-  "candidate": "Divyansh Dubey",
-  "positioning": "Aspiring Java Backend & AI/ML Engineer",
-  "location": "Bengaluru, Karnataka, India",
-  "verified_achievements": {
-    "derma_ai_roc_auc": "93.27%",
-    "secured_rest_apis": "15+ (Spring Security & JWT)",
-    "leetcode_streak": "2x 100 Days Badges",
-    "rnsit_cgpa": "8.80 / 10 (Honors CSE AI/ML)"
-  },
-  "live_deployments": ["DermaAI (Vercel)", "E-TradeLoop (Vercel)"]
-}`
+    leetcode: {
+      cmd: "leetcode stats --user=divyansh_dubey62",
+      badge: "2x 100 Streak",
+      output: [
+        "✓ Active Streaks: 2x 100 Days Problem-Solving Badges",
+        "✓ Primary Language: Java (OOP & DSA)",
+        "✓ Focus Areas: Graphs, Trees, Dynamic Programming",
+        "✓ Profile: leetcode.com/divyansh_dubey62"
+      ]
     }
-  };
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(codeSnippets[activeTab].code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -232,107 +182,127 @@ public class LoopBotService {
 
           </div>
 
-          {/* Right Column: Interactive Multi-Tab Code IDE Window */}
+          {/* Right Column: Interactive System Engineering Dashboard */}
           <div className="lg:col-span-5 relative">
-            <div className="glass-panel-glow rounded-2xl p-5 text-left border border-slate-800 relative z-10 shadow-2xl space-y-4">
+            <div className="glass-panel-glow rounded-3xl p-6 text-left border border-slate-800/90 relative z-10 shadow-2xl space-y-6">
               
-              {/* Window Header with File Tabs */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-800 font-mono text-xs">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+              {/* Card Header & Status Telemetry */}
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold">
+                    <Activity className="w-5 h-5 animate-pulse" />
+                  </div>
+                  <div>
+                    <h3 className="font-mono text-sm font-bold text-slate-100 flex items-center gap-2">
+                      System Architecture Core
+                    </h3>
+                    <p className="text-[11px] font-mono text-slate-400">Production-Ready Microservices & AI</p>
+                  </div>
                 </div>
-
-                <div className="flex items-center gap-1 overflow-x-auto max-w-full">
-                  <button
-                    onClick={() => setActiveTab('security')}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-colors ${
-                      activeTab === 'security'
-                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
-                        : 'text-slate-400 hover:text-slate-200 bg-slate-900/60'
-                    }`}
-                  >
-                    Security.java
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('vision')}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-colors ${
-                      activeTab === 'vision'
-                        ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40 font-bold'
-                        : 'text-slate-400 hover:text-slate-200 bg-slate-900/60'
-                    }`}
-                  >
-                    DermaAI.py
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('ai')}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-colors ${
-                      activeTab === 'ai'
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold'
-                        : 'text-slate-400 hover:text-slate-200 bg-slate-900/60'
-                    }`}
-                  >
-                    LoopBot.java
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('metrics')}
-                    className={`px-2.5 py-1 rounded-md text-[11px] font-mono transition-colors ${
-                      activeTab === 'metrics'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold'
-                        : 'text-slate-400 hover:text-slate-200 bg-slate-900/60'
-                    }`}
-                  >
-                    Metrics.json
-                  </button>
-                </div>
-              </div>
-
-              {/* Sub-Header Indicator */}
-              <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span className="text-cyan-400 font-semibold flex items-center gap-1.5">
-                  <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                  {codeSnippets[activeTab].file}
+                <span className="px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-400 font-mono text-[10px] font-bold">
+                  ● ACTIVE
                 </span>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 font-bold">
-                    {codeSnippets[activeTab].tag}
+              </div>
+
+              {/* 4 Interactive Feature Nodes Grid */}
+              <div className="grid grid-cols-2 gap-3 text-left">
+                
+                {/* Node 1: Spring Boot */}
+                <div 
+                  onClick={() => setActiveCommand('health')}
+                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
+                    activeCommand === 'health' 
+                      ? 'bg-cyan-500/10 border-cyan-500/40 text-cyan-300 shadow-md shadow-cyan-500/10 scale-[1.02]' 
+                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <Server className="w-4 h-4 text-cyan-400" />
+                    <span className="text-[10px] font-mono font-bold text-cyan-400">Java 21</span>
+                  </div>
+                  <div className="font-mono text-xs font-bold text-slate-200">Spring Boot REST</div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-1">15+ REST APIs & JWT</div>
+                </div>
+
+                {/* Node 2: Computer Vision */}
+                <div 
+                  onClick={() => setActiveCommand('vision')}
+                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
+                    activeCommand === 'vision' 
+                      ? 'bg-purple-500/10 border-purple-500/40 text-purple-300 shadow-md shadow-purple-500/10 scale-[1.02]' 
+                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <Cpu className="w-4 h-4 text-purple-400" />
+                    <span className="text-[10px] font-mono font-bold text-emerald-400">93.27%</span>
+                  </div>
+                  <div className="font-mono text-xs font-bold text-slate-200">Computer Vision</div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-1">PyTorch CNN + ViT</div>
+                </div>
+
+                {/* Node 3: Generative AI */}
+                <div 
+                  onClick={() => setActiveCommand('ai')}
+                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
+                    activeCommand === 'ai' 
+                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300 shadow-md shadow-emerald-500/10 scale-[1.02]' 
+                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <Sparkles className="w-4 h-4 text-emerald-400" />
+                    <span className="text-[10px] font-mono font-bold text-emerald-400">GPT-4o</span>
+                  </div>
+                  <div className="font-mono text-xs font-bold text-slate-200">LoopBot LLM</div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-1">Barter Trade AI Engine</div>
+                </div>
+
+                {/* Node 4: LeetCode DSA */}
+                <div 
+                  onClick={() => setActiveCommand('leetcode')}
+                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all duration-200 ${
+                    activeCommand === 'leetcode' 
+                      ? 'bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-md shadow-amber-500/10 scale-[1.02]' 
+                      : 'bg-slate-950/70 border-slate-800/80 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <Trophy className="w-4 h-4 text-amber-400" />
+                    <span className="text-[10px] font-mono font-bold text-amber-400">2x 100</span>
+                  </div>
+                  <div className="font-mono text-xs font-bold text-slate-200">LeetCode Streak</div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-1">Java DSA Optimization</div>
+                </div>
+
+              </div>
+
+              {/* Interactive Live Terminal Simulator Box */}
+              <div className="rounded-2xl bg-slate-950 p-4 border border-slate-900 font-mono text-xs space-y-3 shadow-inner">
+                {/* Terminal Header */}
+                <div className="flex items-center justify-between border-b border-slate-800/80 pb-2 text-[11px] text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <Terminal className="w-3.5 h-3.5 text-cyan-400" />
+                    <span className="text-slate-300 font-semibold">{commandResponses[activeCommand].cmd}</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-cyan-300 font-bold text-[10px]">
+                    {commandResponses[activeCommand].badge}
                   </span>
-                  <button
-                    onClick={handleCopyCode}
-                    className="p-1 rounded bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-cyan-400 transition-colors"
-                    aria-label="Copy Code"
-                    title="Copy Code"
-                  >
-                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
                 </div>
-              </div>
 
-              {/* Interactive Code Display Box */}
-              <div className="rounded-xl bg-slate-950 p-4 border border-slate-900 font-mono text-[11px] leading-relaxed text-slate-300 overflow-x-auto min-h-[260px] flex items-center">
-                <pre className="w-full">
-                  <code>{codeSnippets[activeTab].code}</code>
-                </pre>
-              </div>
+                {/* Command Output Stream */}
+                <div className="space-y-1.5 text-[11px] text-slate-300">
+                  {commandResponses[activeCommand].output.map((line, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <span className="text-emerald-400 font-bold">&gt;</span>
+                      <span>{line}</span>
+                    </div>
+                  ))}
+                </div>
 
-              {/* Bottom Quick Feature Highlights */}
-              <div className="pt-2 border-t border-slate-800/80 grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Server className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>Spring Boot + JWT</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Cpu className="w-4 h-4 text-purple-400 shrink-0" />
-                  <span>PyTorch Vision & LLMs</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Layers className="w-4 h-4 text-indigo-400 shrink-0" />
-                  <span>React Full-Stack</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Code className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>DSA & LeetCode</span>
+                <div className="pt-2 flex items-center justify-between text-[10px] text-slate-500 border-t border-slate-900">
+                  <span>Click any node above to execute command</span>
+                  <span className="text-cyan-400 animate-pulse">● LIVE TELEMETRY</span>
                 </div>
               </div>
 
